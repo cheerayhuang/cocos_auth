@@ -1,7 +1,7 @@
 local ngx_redirect = nil
 if ngx then ngx_redirect = ngx.redirect end
 
-local cocosAuthService = cc.load("cocos_auth").service 
+local cocosAuthService = cc.load("cocos_auth").service
 
 local _COCOS_CLIENT_ID = 167
 
@@ -13,20 +13,20 @@ function PmrAction:ctor(connect)
 end
 
 function PmrAction:loginAction(arg)
-    local cocosUrl = self._cocosAuth:login(arg.url) 
-    
+    local cocosUrl = self._cocosAuth:login(arg.url)
+
     return ngx_redirect(cocosUrl)
 end
 
-function PmrAction:isLoginAction(arg)
+function PmrAction:isloginAction(arg)
     return ngx_redirect(self._cocosAuth:isLogin())
 end
 
-function PmrAction:validateTicketAction(arg)
+function PmrAction:validateticketAction(arg)
     if not arg.ticket then
         throw("param(ticket) is missed.")
     end
-    return self._cocosAuth(arg.ticket)  
+    return self._cocosAuth(arg.ticket)
 end
 
 return PmrAction

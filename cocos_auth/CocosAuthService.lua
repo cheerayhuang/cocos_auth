@@ -8,9 +8,9 @@ local json_decode = json.decode
 local httpClient = require("httpclient").new()
 
 local _SSO_SERVER_URL = "http://passsport.cocos.com/"
-local _SSO_SERVER_IS_SIGNIN_URL = _SSO_SERVER_URL + "sso/is_signin"
-local _SSO_SERVER_ST_VALIDATE_URL = _SSO_SERVER_URL + "sso/st_validate"
-local _SSO_SERVER_SIGNIN_URL = _SSO_SERVER_URL + "sso/signin"
+local _SSO_SERVER_IS_SIGNIN_URL = _SSO_SERVER_URL .. "sso/is_signin"
+local _SSO_SERVER_ST_VALIDATE_URL = _SSO_SERVER_URL .. "sso/st_validate"
+local _SSO_SERVER_SIGNIN_URL = _SSO_SERVER_URL .. "sso/signin"
 
 local CocosAuthService = class("CocosAuthService")
 
