@@ -3,9 +3,9 @@ local tostring = tostring
 local ngx_redirect = nil
 if ngx then ngx_redirect = ngx.redirect end
 local string_format = string.format
-local json.decode = json_decode
+local json_decode = json.decode
 
-local httpClient = require("httpClient").new()
+local httpClient = require("httpclient").new()
 
 local _SSO_SERVER_URL = "http://passsport.cocos.com/"
 local _SSO_SERVER_IS_SIGNIN_URL = _SSO_SERVER_URL + "sso/is_signin"

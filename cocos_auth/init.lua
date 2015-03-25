@@ -1,5 +1,5 @@
 local _P = {}
 
-_P.service = import(".cocosAuthService")
+_P.service = import(".CocosAuthService")
 
 return _P
