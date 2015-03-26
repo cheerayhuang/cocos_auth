@@ -19,10 +19,26 @@ function PmrAction:loginAction(arg)
 end
 
 function PmrAction:isloginAction(arg)
-    return ngx_redirect(self._cocosAuth:isLogin())
+    local res = self._cocosAuth:isLogin()
+    local resp = {}
+
+    if res.sign_status == "yes" then
+        local st = resp.st
+        resp = self:_validateTicket({ticket=st})
+    else
+        resp.status = "failure"
+        resp.msg = "login failed."
+    end
+
+    return resp
 end
 
-function PmrAction:validateticketAction(arg)
+function PmrAction:callbackAction(arg) 
+    
+
+end
+
+function PmrAction:_validateticket(arg)
     if not arg.ticket then
         throw("param(ticket) is missed.")
     end

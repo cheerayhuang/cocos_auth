@@ -22,7 +22,19 @@ function CocosAuthService:ctor(clientId)
 end
 
 function CocosAuthService:isLogin()
-    return _SSO_SERVER_IS_SIGNIN_URL .. "?client_id=" .. tostring(self._clientId)
+    local url = _SSO_SERVER_IS_SIGNIN_URL .. "?client_id=" .. tostring(self._clientId)
+
+    local reply = httpClient:get(url) 
+    if not reply.body then
+        throw("Check whether it is login failed: %s", res.err)
+    end
+
+    local body, err = json_decode(reply.body)
+    if not body then
+        throw("Check whether it is login failed: %s", err)
+    end
+
+    return body
 end
 
 function CocosAuthService:login(url)
